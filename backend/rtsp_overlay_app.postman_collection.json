@@ -1,0 +1,141 @@
+{
+  "info": {
+    "name": "RTSP Overlay App API",
+    "_postman_id": "f23cbb9e-cc13-44d6-9b0a-1234567890ab",
+    "description": "Postman collection for testing the RTSP Overlay backend API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/health",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "health"]
+        }
+      }
+    },
+    {
+      "name": "Start Stream",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"rtspUrl\": \"rtsp://your-camera-url\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/stream/start",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "stream", "start"]
+        }
+      }
+    },
+    {
+      "name": "Stop Stream",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"streamId\": \"PUT-STREAM-ID-HERE\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/stream/stop",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "stream", "stop"]
+        }
+      }
+    },
+    {
+      "name": "Create Overlay",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Overlay\",\n  \"elements\": [\n    { \"type\": \"text\", \"content\": \"Hello World\", \"x\": 10, \"y\": 20 }\n  ]\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/overlays",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "overlays"]
+        }
+      }
+    },
+    {
+      "name": "List Overlays",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/overlays",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "overlays"]
+        }
+      }
+    },
+    {
+      "name": "Get Overlay",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/overlays/{{overlayId}}",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "overlays", "{{overlayId}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Overlay",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Overlay Name\"\n}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/overlays/{{overlayId}}",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "overlays", "{{overlayId}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Overlay",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/overlays/{{overlayId}}",
+          "protocol": "http",
+          "host": ["127.0.0.1"],
+          "port": "8000",
+          "path": ["api", "overlays", "{{overlayId}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "overlayId", "value": "PUT-OVERLAY-ID-HERE" }
+  ]
+}
